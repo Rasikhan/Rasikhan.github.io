@@ -82,10 +82,10 @@ function App() {
             </div>
 
             <div className="socials">
-              <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <a href="https://github.com/Rasikhan" target="_blank" rel="noreferrer" aria-label="GitHub">
                 <Github size={22}/>
               </a>
-              <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/abdul-rasikhan-016289194" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                 <Linkedin size={22}/>
               </a>
             </div>
