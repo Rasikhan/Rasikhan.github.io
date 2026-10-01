@@ -30,6 +30,7 @@ import {
 
 const DEVICON = "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons";
 const logo = name => `${DEVICON}/${name}/${name}-original.svg`;
+const brand = name => `https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/${name}.svg`;
 
 const skillGroups = [
   {
@@ -78,6 +79,16 @@ const skillGroups = [
       { name: "Agentic AI APIs", icon: Bot },
       { name: "Voice AI Integration", icon: Mic },
       { name: "TomTom Maps APIs", icon: MapPin }
+    ]
+  },
+  {
+    icon: Sparkles,
+    title: "AI Tools",
+    items: [
+      { name: "Claude", logo: brand("claude"), invert: true },
+      { name: "ChatGPT", logo: brand("openai"), invert: true },
+      { name: "GitHub Copilot", logo: brand("githubcopilot"), invert: true },
+      { name: "Gemini", logo: brand("googlegemini"), invert: true }
     ]
   },
   {
@@ -169,7 +180,8 @@ const roles = [
   "Frontend Developer",
   "Angular Developer",
   "React Developer",
-  "Spring Boot Developer"
+  "Spring Boot Developer",
+  "AI-Powered Developer"
 ];
 
 const developerCode = `const developer = {
@@ -516,7 +528,9 @@ function App() {
             <RoleRotator active={introDone} />
             <p className="hero-text">
               I build reliable, scalable web applications from polished front-end
-              experiences to robust Java REST APIs and database-backed services.
+              experiences to robust Java REST APIs and database-backed services —
+              and I’m an expert at using AI tools like Claude, ChatGPT, GitHub Copilot
+              and Gemini to ship faster and smarter.
             </p>
 
             <div className="hero-actions">
