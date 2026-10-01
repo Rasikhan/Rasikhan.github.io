@@ -42,6 +42,7 @@ a{text-decoration:none;color:inherit}
 h1{font-size:clamp(3.4rem,9vw,7rem);line-height:1;margin:0;letter-spacing:-4px;min-height:1em}
 h2{font-size:clamp(1.6rem,3vw,2.5rem);margin:15px 0;color:#8599ff}
 .hero-text{max-width:700px;color:#aebbd3;font-size:1.08rem;line-height:1.8}
+.hero-text strong{color:#eaf0ff;font-weight:600}
 .hero-actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 19px;border-radius:12px;font-weight:600}
 .primary{background:#7c8cff;color:#07101f}
@@ -67,6 +68,14 @@ pre{white-space:pre-wrap;margin:0;padding:30px;color:#b7c4ff;font-size:.92rem;li
 
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .about-grid p{color:#aebbd3;line-height:1.9;font-size:1.02rem}
+.about-grid p strong{color:#eaf0ff;font-weight:600}
+.about-side{display:grid;gap:18px}
+.timeline{display:grid;gap:12px}
+.timeline-item{display:flex;gap:16px;padding:20px;border-radius:15px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08)}
+.timeline-icon{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;color:#fff;background:linear-gradient(135deg,#22d3ee,#a855f7)}
+.timeline-item h5{margin:2px 0 4px;font-size:1.02rem}
+.timeline-item p{margin:0!important;font-size:.88rem!important;line-height:1.5!important;color:#94a4c1!important}
+.timeline-item .timeline-date{color:#22d3ee!important;font-size:.75rem!important;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat{border:1px solid rgba(255,255,255,.08);padding:24px;border-radius:15px;background:rgba(255,255,255,.025)}
 .stat strong{display:block;font-size:1.7rem}
@@ -107,21 +116,32 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:26px 0;color:#7e8eaa;f
 .intro.leaving{transform:translateY(-100%);opacity:.6}
 .intro-inner{display:flex;flex-direction:column;align-items:center;gap:18px}
 .intro-name{
-  display:flex;font-size:clamp(3.2rem,13vw,9rem);font-weight:800;letter-spacing:-.04em;line-height:1;
+  display:flex;align-items:baseline;white-space:nowrap;
+  font-size:clamp(2.4rem,10vw,7.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.1;
 }
-.intro-name .letter{
-  background:linear-gradient(120deg,#ffffff 20%,#8f9cff 60%,#5ee0ff);
+.intro-name .ini,.intro-name .expand > span{
+  background:linear-gradient(120deg,#ffffff 10%,#8f9cff 60%,#5ee0ff);
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  background-size:300% 100%;
 }
+/* A, R, K pop in as initials */
+.ini{
+  display:inline-block;opacity:0;transform:scale(.4);filter:blur(10px);
+  animation:iniIn .7s cubic-bezier(.2,.8,.2,1) forwards;
+}
+/* ...then "bdul" and "asikhan" grow out of them */
+.expand{display:inline-grid;grid-template-columns:0fr;animation:expandWord 1s cubic-bezier(.7,0,.2,1) 1.3s forwards}
+.expand > span{overflow:hidden;opacity:0;animation:fadeIn .7s ease 1.55s forwards}
+/* ...while K folds away */
+.shrink{display:inline-grid;grid-template-columns:1fr;animation:shrinkWord .8s cubic-bezier(.7,0,.2,1) 1.2s forwards}
+.shrink > span{overflow:hidden}
 .intro-line{
   height:3px;width:min(340px,60vw);border-radius:3px;
   background:linear-gradient(90deg,transparent,#7c8cff,#5ee0ff,transparent);
-  transform:scaleX(0);animation:sweep 1s cubic-bezier(.65,0,.35,1) .9s forwards;
+  transform:scaleX(0);animation:sweep 1s cubic-bezier(.65,0,.35,1) 2.1s forwards;
 }
 .intro-sub{
   color:#8ea0c3;letter-spacing:.35em;text-transform:uppercase;font-size:.8rem;
-  opacity:0;animation:fadeUp .7s ease 1.3s forwards;
+  opacity:0;animation:fadeUp .7s ease 2.5s forwards;
 }
 
 /* ---------- Letter animation ---------- */
@@ -146,7 +166,7 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:26px 0;color:#7e8eaa;f
 .ready .hero-copy.enter > .hello{animation-delay:.1s}
 .ready .hero-copy.enter > .role{animation-delay:.55s}
 .ready .hero-copy.enter > .hero-text{animation-delay:.7s}
-.ready .hero-copy.enter > .hero-actions{animation-delay:.85s}
+.ready .hero-copy.enter > .hero-actions{animation-delay:.9s}
 .ready .hero-copy.enter > .socials{animation-delay:1s}
 .hero-card{opacity:0;transform:translateX(30px)}
 .ready .hero-card{animation:slideIn .9s cubic-bezier(.2,.8,.2,1) .4s forwards}
@@ -392,6 +412,10 @@ img.invert{filter:invert(1) brightness(1.4)}
 /* ---------- Keyframes ---------- */
 @keyframes marquee{to{transform:translateX(calc(-50% - 7px))}}
 @keyframes learningBar{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+@keyframes iniIn{to{opacity:1;transform:none;filter:blur(0)}}
+@keyframes expandWord{to{grid-template-columns:1fr}}
+@keyframes shrinkWord{to{grid-template-columns:0fr;opacity:0}}
+@keyframes fadeIn{to{opacity:1}}
 @keyframes tileIn{to{opacity:1;transform:none}}
 @keyframes letterIn{to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}

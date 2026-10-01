@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
+  GraduationCap,
   Binary,
   BrainCircuit,
   Cloud,
@@ -110,7 +111,7 @@ const learning = [
   {
     icon: Binary,
     title: "Data Structures & Algorithms",
-    detail: "Problem solving, complexity analysis and core patterns — arrays, trees, graphs and dynamic programming."
+    detail: "Problem solving, complexity analysis and core patterns like arrays, trees, graphs and dynamic programming."
   },
   {
     icon: Cloud,
@@ -130,7 +131,7 @@ const projects = [
     subtitle: "AI-Powered Mathematics Learning Platform",
     client: "Internal Product · Provility",
     description:
-      "End-to-end delivery of a three-application suite — the core Robogebra platform plus the QGen and Point2Space subapplications — with AI tutoring, Voice AI and step-by-step solutions.",
+      "End-to-end delivery of a three-application suite: the core Robogebra platform plus the QGen and Point2Space subapplications, with AI tutoring, Voice AI and step-by-step solutions.",
     highlights: [
       "Angular core platform with RxJS state; QGen & Point2Space built in React",
       "Interactive graphing and visualisation components for learning screens",
@@ -187,10 +188,12 @@ const roles = [
 const developerCode = `const developer = {
   name: "${FULL_NAME}",
   role: "Full Stack Developer",
-  experience: "5 years",
-  frontend: ["Angular", "React"],
-  backend: ["Java", "REST APIs"],
-  database: "PostgreSQL",
+  experience: "5+ years",
+  frontend: ["Angular", "React", "TypeScript"],
+  backend: ["Java", "Spring Boot", "Node.js"],
+  database: ["PostgreSQL", "MongoDB"],
+  aiTools: ["Claude", "ChatGPT", "Copilot", "Gemini"],
+  openToWork: true,
   mindset: "Build. Improve. Deliver."
 };`;
 
@@ -218,8 +221,8 @@ function Intro({ onDone }) {
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
-    const leave = setTimeout(() => setLeaving(true), 2300);
-    const done = setTimeout(onDone, 3100);
+    const leave = setTimeout(() => setLeaving(true), 3800);
+    const done = setTimeout(onDone, 4600);
     return () => { clearTimeout(leave); clearTimeout(done); };
   }, [onDone]);
 
@@ -228,7 +231,15 @@ function Intro({ onDone }) {
   return (
     <div className={`intro ${leaving ? "leaving" : ""}`} onClick={skip}>
       <div className="intro-inner">
-        <Letters text={SHORT_NAME} className="intro-name" baseDelay={150} step={90} />
+        <div className="intro-name" aria-label="Abdul Rasikhan">
+          <span className="ini" style={{ animationDelay: "150ms" }}>A</span>
+          <span className="expand"><span>bdul&nbsp;</span></span>
+          <span className="ini" style={{ animationDelay: "300ms" }}>R</span>
+          <span className="expand"><span>asikhan</span></span>
+          <span className="shrink">
+            <span><span className="ini" style={{ animationDelay: "450ms" }}>K</span></span>
+          </span>
+        </div>
         <span className="intro-line" />
         <span className="intro-sub">Full Stack Developer</span>
       </div>
@@ -522,15 +533,14 @@ function App() {
       <main>
         <section id="home" className="hero container">
           <div className="hero-copy enter">
-            <span className="eyebrow"><Sparkles size={16}/> Available for Full Stack opportunities</span>
+            <span className="eyebrow"><span className="status-dot" /> Open to new opportunities · Chennai, India</span>
             <p className="hello">Hello, It’s Me</p>
             <h1>{introDone && <Letters text={SHORT_NAME} className="hero-name" baseDelay={100} step={60} />}</h1>
             <RoleRotator active={introDone} />
             <p className="hero-text">
-              I build reliable, scalable web applications from polished front-end
-              experiences to robust Java REST APIs and database-backed services —
-              and I’m an expert at using AI tools like Claude, ChatGPT, GitHub Copilot
-              and Gemini to ship faster and smarter.
+              Full Stack Developer with <strong>5+ years of experience</strong> shipping
+              production web apps with <strong>Angular &amp; React</strong> front ends
+              and <strong>Java &amp; Spring Boot</strong> back ends, delivered end to end.
             </p>
 
             <div className="hero-actions">
@@ -567,15 +577,22 @@ function App() {
             <div className="about-grid reveal">
               <div>
                 <p>
-                  I’m a Full Stack Developer with around 5 years of experience
-                  developing production web applications across education technology
-                  and transportation technology domains.
+                  I’m a Full Stack Developer at <strong>Provility Software Solutions</strong> in
+                  Chennai, with <strong>5+ years</strong> of experience building production
+                  single-page applications and the services behind them, for EdTech
+                  products and for transportation clients in <strong>Finland and Canada</strong>.
                 </p>
                 <p>
-                  I work across the full development lifecycle—from reusable UI
-                  components and client-side state management to backend service
-                  design, API integration, database modelling, performance
-                  improvements, and AI-powered features.
+                  I specialise in <strong>Angular</strong> front ends (component architecture,
+                  RxJS reactive state and TypeScript), backed by <strong>Java, Spring Boot</strong> REST
+                  APIs, Hibernate/JPA and distributed microservices, with production
+                  experience in React and Ember.js as well.
+                </p>
+                <p>
+                  I own features end to end in Agile/Scrum teams: from UI components and
+                  client-side state to service design, third-party and AI integrations, and
+                  PostgreSQL data modelling. Every day I use AI tools like Claude, ChatGPT,
+                  GitHub Copilot and Gemini to deliver faster without cutting corners.
                 </p>
                 <div className="terminal">
                   <div className="terminal-top"><span></span><span></span><span></span><em>developer.js</em></div>
@@ -583,11 +600,32 @@ function App() {
                 </div>
               </div>
 
-              <div className="stat-grid">
-                <div className="stat"><strong>5+</strong><span>Years Experience</span></div>
-                <div className="stat"><strong>5K+</strong><span>Users Supported</span></div>
-                <div className="stat"><strong>20</strong><span>Team Environment</span></div>
-                <div className="stat"><strong>End-to-End</strong><span>Feature Delivery</span></div>
+              <div className="about-side">
+                <div className="stat-grid">
+                  <div className="stat"><strong>5+</strong><span>Years Experience</span></div>
+                  <div className="stat"><strong>3</strong><span>Products Shipped</span></div>
+                  <div className="stat"><strong>2</strong><span>International Clients</span></div>
+                  <div className="stat"><strong>End-to-End</strong><span>Feature Ownership</span></div>
+                </div>
+
+                <div className="timeline">
+                  <div className="timeline-item">
+                    <span className="timeline-icon"><BriefcaseBusiness size={18} /></span>
+                    <div>
+                      <p className="timeline-date">Jul 2021 – Present</p>
+                      <h5>Software Developer</h5>
+                      <p>Provility Software Solutions · Chennai, India</p>
+                    </div>
+                  </div>
+                  <div className="timeline-item">
+                    <span className="timeline-icon"><GraduationCap size={18} /></span>
+                    <div>
+                      <p className="timeline-date">2015 – 2019</p>
+                      <h5>B.E. Mechanical Engineering</h5>
+                      <p>National College of Engineering, Tamil Nadu</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -613,7 +651,7 @@ function App() {
             <div className="learning-head">
               <span className="learning-badge"><InfinityIcon size={18} /> Always learning</span>
               <h4>Currently levelling up</h4>
-              <p>Learning never stops — here’s what I’m actively working on right now.</p>
+              <p>Learning never stops. Here’s what I’m actively working on right now.</p>
             </div>
             <div className="learning-grid">
               {learning.map(({ icon: Icon, title, detail }) => (
